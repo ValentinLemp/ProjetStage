@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-class Profil extends Controller
+class ProfilController extends Controller
 {
     public function __construct()
     {
@@ -9,11 +9,11 @@ class Profil extends Controller
 
     public function connexion()
     {
-        return view('profils/connect');
+        return view('profils.connect');
     }
 
     public function register()
     {
-        return view('profils/register');
+        return view('profils.register');
     }
 }
