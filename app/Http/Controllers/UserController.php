@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\user;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function add()
     {
-        $item = new user();
+        $item = new User();
         $item->name = "";
         $item->email = "";
         $item->phone = "";
@@ -18,13 +18,13 @@ class UserController extends Controller
 
     public function chows($id)
     {
-        $item = user::findOrFail($id);
+        $item = User::findOrFail($id);
         return $item;
     }
 
     public function update($id)
     {
-        $item = user::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->name = "";
         $item->email = "";
         $item->phone = "";
@@ -32,7 +32,7 @@ class UserController extends Controller
     }
     public function delete($id)
     {
-        $item = user::findOrFail($id);
+        $item = User::findOrFail($id);
         $item->delete();
     }
 }

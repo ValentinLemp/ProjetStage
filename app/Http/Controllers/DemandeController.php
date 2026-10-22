@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\demande;
+use App\Models\Demande;
 use Illuminate\Http\Request;
 
 class DemandeController extends Controller
 {
     public function chows($id)
     {
-        $items = demande::findOrFail($id);
+        $items = Demande::findOrFail($id);
         return $items;
     }
 
     public function add()
     {
-        $item = new demande();
+        $item = new Demande();
         $item->title = "";
         $item->description = "";
         $item->statut_id = "";
@@ -23,7 +23,7 @@ class DemandeController extends Controller
     }
     public function delete($id)
     {
-        $item = demande::findOrFail($id);
+        $item = Demande::findOrFail($id);
         $item->delete();
     }
 }
