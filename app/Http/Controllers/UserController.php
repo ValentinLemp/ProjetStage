@@ -11,7 +11,7 @@ class UserController extends Controller
     {
         $item = new user();
         $item->name = "";
-        $item->email  "";
+        $item->email = "";
         $item->phone = "";
         $item->save();
     }

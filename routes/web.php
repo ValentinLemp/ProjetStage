@@ -2,10 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\Controller;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::view('', 'home')->name('accueil');
 
 Route::controller(ProfilController::class)->group(function () {
     Route::get('connect','connexion')->name('profils.connect');
