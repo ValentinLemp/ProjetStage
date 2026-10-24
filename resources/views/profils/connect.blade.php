@@ -23,6 +23,6 @@
     <div class="centre">
         <input type="email" name="email" id="email" placeholder="Votre adresse e-mail">
         <button>Se connecter</button>
-        <button>S'enregistrer</button>
+        <button onclick="window.location='{{ route('profils.register') }}'">S'enregistrer</button>
     </div>
 @endsection

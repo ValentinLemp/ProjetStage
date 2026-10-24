@@ -1,3 +1,8 @@
+<?php
+session_start()
+$_SESSION['idUser']
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
