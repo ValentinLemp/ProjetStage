@@ -2,14 +2,16 @@
 namespace App\Http\Controllers;
 class ProfilController extends Controller
 {
-    public function __construct()
-    {
-        //voir si connecter ou non
-    }
-
     public function connexion()
     {
-        return view('profils.connect');
+        if(session('idUser') == null)
+        {
+            return view('profils.connect');
+        }
+        else
+        {
+            return view('profils.home');
+        }
     }
 
     public function register()

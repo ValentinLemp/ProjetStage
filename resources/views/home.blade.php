@@ -13,8 +13,3 @@
 @section('content')
     <h1>Bienvenue dans l'inventaire de vos demandes</h1>
 @endsection
-
-<?php
-session_start()
-$_SESSION['idUser'];
-?>
