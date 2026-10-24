@@ -29,11 +29,34 @@
             font-weight: bold;
             background-color: aliceblue;
         }
+        .centre{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            flex-direction: column;
+        }
+        .centre input,
+        .centre button {
+            width: 300px;
+            height: 50px;
+            font-size: 18px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
     </style>
 </head>
 <body>
+    @if (session('success'))
+        <p>{{ session('success') }}</p>
+    @endif
     <button onclick="window.location='{{ route('accueil') }}'" class="Btn-accueil">Accueil</button>
-    <button onclick="window.location='{{ route('profils.connect') }}'" class="Btn-profil">Profils</button>
+    @if (request()->routeIs('profils.home'))
+        <button onclick="window.location='{{ route('profils.modifier') }}'" class="Btn-profil">Modfier</button>
+    @else
+        <button onclick="window.location='{{ route('profils.connect') }}'" class="Btn-profil">Profils</button>
+    @endif
     @yield('content')
 </body>
 </html>

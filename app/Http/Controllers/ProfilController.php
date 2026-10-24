@@ -4,14 +4,14 @@ class ProfilController extends Controller
 {
     public function connexion()
     {
-        session(['idUser' => null]);
+        //session(['idUser' => null]);
         if(session('idUser') == null)
         {
             return view('profils.connect');
         }
         else
         {
-            return view('profils.home');
+            return redirect()->route('profils.home');
         }
     }
 

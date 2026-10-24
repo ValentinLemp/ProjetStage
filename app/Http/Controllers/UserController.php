@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         session(['idUser' => $user->id]);
 
-        return redirect()->route('profil.home')
+        return redirect()->route('profils.home')
             ->with('success', 'Connexion réussie.');
     }
     public function addUser(Request $request)
@@ -40,13 +41,33 @@ class UserController extends Controller
         $item->save();
 
         session(['idUser' =>  $item->id]);
-        return redirect()->route('profil.home')->with('success', 'Enregistrement réussi.');
+        return redirect()->route('profils.home')->with('success', 'Enregistrement réussi.');
     }
 
-    public function chows($id)
+    public function updateUser(Request $request)
     {
-        $item = User::findOrFail($id);
-        return $item;
+        $item = User::findOrFail(session('idUser'));
+
+
+        $validated = $request->validate([
+            'name'  => 'required|string|max:100',
+            'email' => ['required', 'email', 'max:100', Rule::unique('users', 'email')->ignore($item->id)],
+            'phone' => 'nullable|string|max:20',
+        ]);
+
+        $item->name  = $validated['name'];
+        $item->email = $validated['email'];
+        $item->phone = $validated['phone'] ?? null;
+        $item->update();
+
+        session(['idUser' =>  $item->id]);
+        return back()->with('success', 'Modification réussi.');
+    }
+
+    public function selectUser()
+    {
+        $item = User::findOrFail(session('idUser'));
+        return view('profils.updateProfil', ['item' => $item]);
     }
 
     public function update($id)
