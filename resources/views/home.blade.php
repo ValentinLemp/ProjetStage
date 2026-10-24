@@ -10,6 +10,7 @@
         }
     </style>
 @endpush
+
 @section('content')
     <h1>Bienvenue dans l'inventaire de vos demandes</h1>
 @endsection

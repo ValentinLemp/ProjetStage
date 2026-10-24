@@ -78,9 +78,18 @@ class UserController extends Controller
         $item->phone = "";
         $item->update();
     }
-    public function delete($id)
+    public function deleteUser()
     {
-        $item = User::findOrFail($id);
+        $item = User::findOrFail(session('idUser'));
         $item->delete();
+
+        session(['idUser' => null]);
+        return redirect()->route('accueil')->with('success', 'Modification réussi.');
+    }
+
+    public function deconnexion()
+    {
+        session(['idUser' => null]);
+        return redirect()->route('accueil')->with('success', 'Modification réussi.');
     }
 }

@@ -7,6 +7,6 @@
                    value="{{ old('email') }}" required>
             @error('email') <p>{{ $message }}</p> @enderror
             <button type="submit">Se connecter</button>
-            <button onclick="window.location='{{ route('profils.register') }}'">S'enregistrer</button>
+            <button type="button" onclick="window.location='{{ route('profils.register') }}'">S'enregistrer</button>
         </form>
 @endsection

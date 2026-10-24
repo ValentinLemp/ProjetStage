@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Document</title>
-    @stack('styles')
     <style>
         body{
             background-color: darkcyan;
@@ -45,7 +44,18 @@
             border-radius: 8px;
             box-sizing: border-box;
         }
+        .Btn-profil-home {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 100px;
+            height: 40px;
+            border-radius: 10px;
+            font-weight: bold;
+            background-color: aliceblue;
+        }
     </style>
+    @stack('styles')
 </head>
 <body>
     @if (session('success'))
@@ -58,5 +68,11 @@
         <button onclick="window.location='{{ route('profils.connect') }}'" class="Btn-profil">Profils</button>
     @endif
     @yield('content')
+
+    @if (request()->routeIs('profils.home'))
+        <button onclick="window.location='{{ route('user.delete') }}'" class="Btn-profil-home">Déconnexion</button>
+    @elseif(request()->routeIs('profils.modifier'))
+        <button onclick="window.location='{{ route('user.deconnexion') }}'" class="Btn-profil-home">Supprimer</button>
+    @endif
 </body>
 </html>
