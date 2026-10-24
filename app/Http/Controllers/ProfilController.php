@@ -4,6 +4,7 @@ class ProfilController extends Controller
 {
     public function connexion()
     {
+        session(['idUser' => null]);
         if(session('idUser') == null)
         {
             return view('profils.connect');
