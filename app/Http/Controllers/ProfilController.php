@@ -14,6 +14,11 @@ class ProfilController extends Controller
         }
     }
 
+    public function profil()
+    {
+        return view('profils.home');
+    }
+
     public function register()
     {
         return view('profils.register');

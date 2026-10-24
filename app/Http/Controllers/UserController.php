@@ -7,13 +7,16 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function add()
+    public function addUser(Request $request)
     {
         $item = new User();
-        $item->name = "";
-        $item->email = "";
-        $item->phone = "";
+        $item->name = request('name');
+        $item->email = request('email');
+        $item->phone = request('phone') ?? null;
         $item->save();
+
+        session(['id_user' => 1]);
+        return redirect()->route('profil.home')->with('success', 'Enregistrement réussi.');
     }
 
     public function chows($id)
