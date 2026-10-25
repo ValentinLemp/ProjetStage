@@ -70,14 +70,7 @@ class UserController extends Controller
         return view('profils.updateProfil', ['item' => $item]);
     }
 
-    public function update($id)
-    {
-        $item = User::findOrFail($id);
-        $item->name = "";
-        $item->email = "";
-        $item->phone = "";
-        $item->update();
-    }
+
     public function deleteUser()
     {
         $item = User::findOrFail(session('idUser'));

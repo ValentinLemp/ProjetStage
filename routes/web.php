@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DemandeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfilController;
@@ -28,6 +29,13 @@ Route::controller(UserController::class)->group(function (){
     Route::Post('profil/modifier', 'updateUser')->name('user.update');
     Route::get('profil/delete', 'deleteUser')->name('user.delete');
     Route::get('profil/deconnexion', 'deconnexion')->name('user.deconnexion');
+});
+
+//DEMANDE----------------
+Route::controller(DemandeController::class)->group(function (){
+    //Route::post('demande/enregistrement', 'addDemande')->name('user.add');
+    Route::Post('demande/modifier', 'updateDemande')->name('demande.update');
+    //Route::get('demande/modifier', 'deleteUser')->name('user.delete');
 });
 
 

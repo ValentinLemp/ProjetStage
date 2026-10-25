@@ -21,6 +21,11 @@ class DemandeController extends Controller
         $item->statut_id = "";
         $item->save();
     }
+
+    public function updateDemande()
+    {
+
+    }
     public function delete($id)
     {
         $item = Demande::findOrFail($id);

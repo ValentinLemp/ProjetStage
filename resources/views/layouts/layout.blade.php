@@ -12,7 +12,7 @@
             position: absolute;
             top: 10px;
             right: 10px;
-            width: 80px;
+            width: 100px;
             height: 40px;
             border-radius: 10px;
             font-weight: bold;
@@ -59,20 +59,22 @@
 </head>
 <body>
     @if (session('success'))
-        <p>{{ session('success') }}</p>
+        <p style="text-align: center;">{{ session('success') }}</p>
     @endif
+
+
     <button onclick="window.location='{{ route('accueil') }}'" class="Btn-accueil">Accueil</button>
     @if (request()->routeIs('profils.home'))
-        <button onclick="window.location='{{ route('profils.modifier') }}'" class="Btn-profil">Modfier</button>
+        <button onclick="window.location='{{ route('profils.modifier') }}'" class="Btn-profil">Modifier votre profil</button>
     @else
         <button onclick="window.location='{{ route('profils.connect') }}'" class="Btn-profil">Profils</button>
     @endif
     @yield('content')
 
     @if (request()->routeIs('profils.home'))
-        <button onclick="window.location='{{ route('user.delete') }}'" class="Btn-profil-home">Déconnexion</button>
+        <button onclick="window.location='{{ route('user.deconnexion') }}'" class="Btn-profil-home">Déconnexion</button>
     @elseif(request()->routeIs('profils.modifier'))
-        <button onclick="window.location='{{ route('user.deconnexion') }}'" class="Btn-profil-home">Supprimer</button>
+        <button onclick="window.location='{{ route('user.delete') }}'" class="Btn-profil-home">Supprimer</button>
     @endif
 </body>
 </html>

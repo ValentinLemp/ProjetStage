@@ -20,7 +20,7 @@ class StatutSeeder extends Seeder
             'label' => 'en cours',
         ]);
         Statut::factory()->create([
-            'label' => 'términé',
+            'label' => 'terminé',
         ]);
     }
 }
