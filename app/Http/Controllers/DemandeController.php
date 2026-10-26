@@ -7,28 +7,47 @@ use Illuminate\Http\Request;
 
 class DemandeController extends Controller
 {
-    public function chows($id)
+    public function viewAddDemande()
     {
-        $items = Demande::findOrFail($id);
-        return $items;
+        return view('demandes.addDemande');
     }
 
-    public function add()
+    public function addDemande(Request $request)
     {
+        $validated = $request->validate([
+            'title'  => 'required|string|max:100',
+            'description' => 'required|string|max:250',
+        ]);
+
         $item = new Demande();
-        $item->title = "";
-        $item->description = "";
-        $item->statut_id = "";
+        $item->title  = $validated['title'];
+        $item->description = $validated['description'];
+        $item->statut_id = '1';
+        $item->user_id = session('idUser');
         $item->save();
+
+        return redirect()->route('profils.home')->with('success', 'Enregistrement réussi.');
     }
 
-    public function updateDemande()
+    public function updateDemande(Request $request, Demande $item)
     {
+        $validated = $request->validate([
+            'title'  => 'required|string|max:100',
+            'description' => 'required|string|max:250',
+            'statut_id' => 'required',
+        ]);
 
+        $item->title  = $validated['title'];
+        $item->description = $validated['description'];
+        $item->statut_id = $validated['statut_id'];
+        $item->user_id = session('idUser');
+        $item->save();
+
+        return back()->with('success', 'Modification réussi.');
     }
-    public function delete($id)
+    public function deleteDemande(Demande $item)
     {
-        $item = Demande::findOrFail($id);
         $item->delete();
+        return redirect()->route('profils.home');
     }
 }

@@ -49,7 +49,20 @@
         .tableau tbody tr:hover {
         background: #e3f2f0;
         }
+
+        .Btn-add-demande{
+            position: absolute;
+            bottom: 100px;
+            width: 180px;
+            height: 50px;
+            font-size: 15px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
     </style>
+@endpush
+@push('Btn-footer')
+    <button onclick="window.location='{{ route('user.deconnexion') }}'" class="Btn-profil-home">Déconnexion</button>
 @endpush
 
 @section('content')
@@ -67,17 +80,16 @@
                 </tr>
                 </thead>
                 <tbody>
-                @foreach ($items as $item)
-                    <tr>
-                        onclick="window.location='{{ route('demande.update', $item) }}'">
-                        <td>{{ $item->title }}</td>
-                        <td>{{ $item->description }}</td>
-                        <td>{{ $item->statut->label }}</td>
-                    </tr>
-                @endforeach
+                    @foreach ($items as $item)
+                        <tr onclick="window.location='{{ route('profils.demande.modifier', $item) }}'">
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->description }}</td>
+                            <td>{{ $item->statut->label }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
-        <button>Ajouter une demande</button>
+        <button class="Btn-add-demande" onclick="window.location='{{ route('demande.view.add') }}'">Ajouter une demande</button>
     </div>
 @endsection

@@ -37,6 +37,7 @@
             flex-direction: column;
         }
         .centre input,
+        .centre select,
         .centre button {
             width: 300px;
             height: 50px;
@@ -55,6 +56,7 @@
             background-color: aliceblue;
         }
     </style>
+
     @stack('styles')
 </head>
 <body>
@@ -62,19 +64,15 @@
         <p style="text-align: center;">{{ session('success') }}</p>
     @endif
 
-
     <button onclick="window.location='{{ route('accueil') }}'" class="Btn-accueil">Accueil</button>
     @if (request()->routeIs('profils.home'))
         <button onclick="window.location='{{ route('profils.modifier') }}'" class="Btn-profil">Modifier votre profil</button>
     @else
         <button onclick="window.location='{{ route('profils.connect') }}'" class="Btn-profil">Profils</button>
     @endif
+
     @yield('content')
 
-    @if (request()->routeIs('profils.home'))
-        <button onclick="window.location='{{ route('user.deconnexion') }}'" class="Btn-profil-home">Déconnexion</button>
-    @elseif(request()->routeIs('profils.modifier'))
-        <button onclick="window.location='{{ route('user.delete') }}'" class="Btn-profil-home">Supprimer</button>
-    @endif
+    @stack('Btn-footer')
 </body>
 </html>

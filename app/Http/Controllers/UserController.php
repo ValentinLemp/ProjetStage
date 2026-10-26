@@ -23,8 +23,7 @@ class UserController extends Controller
 
         session(['idUser' => $user->id]);
 
-        return redirect()->route('profils.home')
-            ->with('success', 'Connexion réussie.');
+        return redirect()->route('profils.home')->with('success', 'Connexion réussie.');
     }
     public function addUser(Request $request)
     {
@@ -47,7 +46,6 @@ class UserController extends Controller
     public function updateUser(Request $request)
     {
         $item = User::findOrFail(session('idUser'));
-
 
         $validated = $request->validate([
             'name'  => 'required|string|max:100',

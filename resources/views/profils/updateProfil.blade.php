@@ -1,4 +1,7 @@
 @extends('layouts.layout')
+@push('Btn-footer')
+    <button onclick="window.location='{{ route('user.delete') }}'" class="Btn-profil-home">Supprimer</button>
+@endpush
 
 @section('content')
     <form class ="centre" method="post" action="{{ route('user.update') }}" >
