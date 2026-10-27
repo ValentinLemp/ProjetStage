@@ -20,6 +20,7 @@ class DemandeFactory extends Factory
             'description' => fake()->text(),
             'user_id' => fake()->numberBetween(1, 10),
             'statut_id' => fake()->numberBetween(1, 3),
+            'dueDate' => fake()->dateTimeBetween('-1 months', '+1 months'),
         ];
     }
 }

@@ -15,4 +15,8 @@ class demande extends Model
     {
         return $this->belongsTo(Statut::class);
     }
+
+    protected $casts = [
+        'dueDate' => 'date',
+    ];
 }

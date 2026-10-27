@@ -77,6 +77,7 @@
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Statut</th>
+                    <th>Date d'échéance</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -85,6 +86,7 @@
                             <td>{{ $item->title }}</td>
                             <td>{{ $item->description }}</td>
                             <td>{{ $item->statut->label }}</td>
+                            <td>{{ $item->dueDate->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
                 </tbody>

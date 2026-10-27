@@ -17,6 +17,7 @@ class DemandeController extends Controller
         $validated = $request->validate([
             'title'  => 'required|string|max:100',
             'description' => 'required|string|max:250',
+            'dueDate' => 'required|date|after:today',
         ]);
 
         $item = new Demande();
@@ -24,6 +25,7 @@ class DemandeController extends Controller
         $item->description = $validated['description'];
         $item->statut_id = '1';
         $item->user_id = session('idUser');
+        $item->dueDate = $validated['dueDate'];
         $item->save();
 
         return redirect()->route('profils.home')->with('success', 'Enregistrement réussi.');
@@ -35,12 +37,14 @@ class DemandeController extends Controller
             'title'  => 'required|string|max:100',
             'description' => 'required|string|max:250',
             'statut_id' => 'required',
+            'dueDate' => 'required|date|after:today',
         ]);
 
         $item->title  = $validated['title'];
         $item->description = $validated['description'];
         $item->statut_id = $validated['statut_id'];
         $item->user_id = session('idUser');
+        $item->dueDate = $validated['dueDate'];
         $item->save();
 
         return back()->with('success', 'Modification réussi.');

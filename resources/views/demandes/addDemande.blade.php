@@ -11,6 +11,10 @@
                value="{{ old('description') }}" required>
         @error('description') <p>{{ $message }}</p> @enderror
 
+        <input type="date" name="dueDate" id="dueDate"
+               value="{{ old('dueDate') }}" required>
+        @error('dueDate') <p>{{ $message }}</p> @enderror
+
         <button type="submit">Enregistrer</button>
     </form>
 @endsection

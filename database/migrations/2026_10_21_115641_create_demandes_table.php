@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('statut_id')->constrained('statuts')->cascadeOnDelete();
+            $table->dateTime('dueDate');
         });
     }
 
