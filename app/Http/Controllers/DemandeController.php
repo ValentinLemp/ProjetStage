@@ -52,6 +52,6 @@ class DemandeController extends Controller
     public function deleteDemande(Demande $item)
     {
         $item->delete();
-        return redirect()->route('profils.home');
+        return redirect()->route('profils.home')->with('success', 'suppression réussi.');
     }
 }

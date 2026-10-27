@@ -59,6 +59,16 @@
             border-radius: 8px;
             box-sizing: border-box;
         }
+        .filtre{
+            position: absolute;
+            top: 70px;
+            left: 325px;
+            width: 130px;
+            height: 40px;
+            font-size: 15px;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
     </style>
 @endpush
 @push('Btn-footer')
@@ -66,6 +76,16 @@
 @endpush
 
 @section('content')
+    <form method="GET" action="{{ route('profils.home') }}">
+        <select class="filtre" name="statut_id" onchange="this.form.submit()">
+            <option value="">Sans filtre</option>
+            @foreach($statuts as $statut)
+                <option value="{{ $statut->id }} "@selected(request('statut_id') == $statut->id)>{{$statut->label}}</option>
+            @endforeach
+        </select>
+    </form>
+
+
     <div class="tableau-wrapper">
         <h2>Vos demandes</h2>
 

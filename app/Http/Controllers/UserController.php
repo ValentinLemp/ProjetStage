@@ -75,12 +75,12 @@ class UserController extends Controller
         $item->delete();
 
         session(['idUser' => null]);
-        return redirect()->route('accueil')->with('success', 'Modification réussi.');
+        return redirect()->route('accueil')->with('success', 'suppression réussi.');
     }
 
     public function deconnexion()
     {
         session(['idUser' => null]);
-        return redirect()->route('accueil')->with('success', 'Modification réussi.');
+        return redirect()->route('accueil')->with('success', 'déconnexion réussi.');
     }
 }
